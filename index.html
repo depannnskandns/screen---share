@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>berbagi layar</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2rem; }
+    video { width: 100%; max-width: 400px; border: 2px solid #ccc; }
+    button { padding: 1rem; font-size: 16px; margin: 1rem; }
+  </style>
+</head>
+<body>
+  <h2>berbagi layar hp</h2>
+  <button onclick="startShare()">mulai bagikan layar</button>
+  <br>
+  <video id="screen" autoplay playsinline></video>
+
+  <script>
+    async function startShare() {
+      try {
+        const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+        document.getElementById('screen').srcObject = stream;
+      } catch (err) {
+        alert('izin diperlukan untuk membagikan layar');
+      }
+    }
+  </script>
+</body>
+</html>
